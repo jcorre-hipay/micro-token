@@ -1,0 +1,6 @@
+formatter.name: pretty
+
+suites:
+    main:
+        namespace: Hipay\MicroToken
+        psr4_prefix: Hipay\MicroToken

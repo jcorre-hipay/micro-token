@@ -1,0 +1,38 @@
+{
+    "micro_token.token_manager": {
+        "class": "Hipay\\MicroToken\\Model\\TokenManager",
+        "arguments": [
+            "@logger",
+            "@micro_token.key_store"
+        ]
+    },
+    "micro_token.key_store": {
+        "class": "Hipay\\MicroToken\\Model\\KeyStore",
+        "arguments": [
+            "@micro_token.json_file_storage_adapter",
+            "%storage_path%"
+        ]
+    },
+    "micro_token.json_file_storage_adapter": {
+        "class": "Hipay\\MicroToken\\Model\\StorageAdapter\\JsonFileStorageAdapter"
+    },
+    "micro_token.cipher_registry": {
+        "class": "Hipay\\MicroToken\\Model\\CipherRegistry",
+        "arguments": [
+            {
+                "md5": "@micro_token.md5_cipher",
+                "sha1": "@micro_token.sha1_cipher",
+                "sha256": "@micro_token.sha256_cipher"
+            }
+        ]
+    },
+    "micro_token.md5_cipher": {
+        "class": "Hipay\\MicroToken\\Model\\Cipher\\Md5Cipher"
+    },
+    "micro_token.sha1_cipher": {
+        "class": "Hipay\\MicroToken\\Model\\Cipher\\Sha1Cipher"
+    },
+    "micro_token.sha256_cipher": {
+        "class": "Hipay\\MicroToken\\Model\\Cipher\\Sha256Cipher"
+    }
+}

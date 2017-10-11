@@ -1,0 +1,4 @@
+{
+    "monolog.logfile": "/tmp/micro-token.log",
+    "storage_path": "/tmp/micro-token.json"
+}

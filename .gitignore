@@ -1,0 +1,6 @@
+.idea/
+bin/*
+!bin/server.sh
+vendor/
+config/parameters.json
+phpspec.yml
