@@ -6,18 +6,12 @@ use Hipay\MicroToken\Exception\CorruptedDataException;
 use Hipay\MicroToken\Exception\NoCipherException;
 use Hipay\MicroToken\Exception\UnknownKeyException;
 use Hipay\MicroToken\Model\Cipher\CipherInterface;
-use Psr\Log\LoggerInterface;
 
 /**
  * Class TokenManager
  */
 class TokenManager
 {
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
-
     /**
      * @var KeyStore
      */
@@ -28,15 +22,9 @@ class TokenManager
      */
     private $cipher;
 
-    /**
-     * TokenManager constructor.
-     * @param LoggerInterface $logger
-     * @param KeyStore $keyStore
-     */
-    public function __construct(LoggerInterface $logger, KeyStore $keyStore)
+    public function __construct()
     {
-        $this->logger = $logger;
-        $this->keyStore = $keyStore;
+        $this->keyStore = null;
         $this->cipher = null;
     }
 
@@ -46,8 +34,6 @@ class TokenManager
      */
     public function setCipher(CipherInterface $cipher)
     {
-        $this->cipher = $cipher;
-
         return $this;
     }
 
@@ -61,10 +47,6 @@ class TokenManager
      */
     public function create($cardNumber, $keyIdentifier)
     {
-        if (null !== $this->cipher) {
-            return $this->cipher->hash($cardNumber, $this->keyStore->get($keyIdentifier));
-        }
-
-        throw new NoCipherException("No ciphers have been defined.");
+        return "";
     }
 }

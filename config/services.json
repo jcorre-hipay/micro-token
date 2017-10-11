@@ -2,7 +2,6 @@
     "micro_token.token_manager": {
         "class": "Hipay\\MicroToken\\Model\\TokenManager",
         "arguments": [
-            "@logger",
             "@micro_token.key_store"
         ]
     },
