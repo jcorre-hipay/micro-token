@@ -22,7 +22,7 @@ class TokenManager
      */
     private $cipher;
 
-    public function __construct()
+    public function __construct(KeyStore $keyStore)
     {
         $this->keyStore = null;
         $this->cipher = null;

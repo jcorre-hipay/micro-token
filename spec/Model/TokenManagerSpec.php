@@ -13,5 +13,13 @@ use Prophecy\Argument;
  */
 class TokenManagerSpec extends ObjectBehavior
 {
+    function it_creates_a_token_from_a_card_number_and_a_key()
+    {
 
+    }
+
+    function it_throws_an_exception_when_no_ciphers_have_been_set()
+    {
+
+    }
 }
