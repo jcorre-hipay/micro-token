@@ -1,0 +1,59 @@
+@startuml
+
+class TokenManager {
+    + <b>setCipher(</b><i>CipherInterface</i> cipher<b>)</b>
+    + <b>create(</b><i>string</i> cardNumber<b>,</b> <i>int</i> keyIdentifier<b>)</b>: <i>string</i>
+}
+
+class KeyStore {
+    + <b>register(</b><i>int</i> id<b>,</b> <i>string</i> value<b>)</b>
+    + <b>get(</b><i>int</i> id<b>)</b>: <i>string</i>
+}
+
+class CipherRegistry {
+    + <b>get(</b><i>string</i> algorithm<b>)</b>: <i>CipherInterface</i>
+}
+
+interface CipherInterface {
+    + <b>hash(</b><i>string</i> data<b>,</b> <i>string</i> key<b>)</b>: <i>string</i>
+}
+
+abstract class AbstractCipher {
+    + <b>hash(</b><i>string</i> data<b>,</b> <i>string</i> key<b>)</b>: <i>string</i>
+}
+
+class Md5Cipher {
+    + <b>hash(</b><i>string</i> data<b>,</b> <i>string</i> key<b>)</b>: <i>string</i>
+}
+
+class Sha1Cipher {
+    + <b>hash(</b><i>string</i> data<b>,</b> <i>string</i> key<b>)</b>: <i>string</i>
+}
+
+class Sha256Cipher {
+    + <b>hash(</b><i>string</i> data<b>,</b> <i>string</i> key<b>)</b>: <i>string</i>
+}
+
+interface StorageAdapterInterface {
+    + <b>load(</b><i>string</i> storage<b>)</b>: <i>array</i>
+    + <b>save(</b><i>string</i> storage<b>,</b> <i>array</i> data<b>)</b>
+}
+
+class JsonFileStorageAdapter {
+    + <b>load(</b><i>string</i> storage<b>)</b>: <i>array</i>
+    + <b>save(</b><i>string</i> storage<b>,</b> <i>array</i> data<b>)</b>
+}
+
+TokenManager o-- KeyStore
+TokenManager o-- CipherInterface
+
+KeyStore o- StorageAdapterInterface
+
+CipherInterface <|.. AbstractCipher
+AbstractCipher <|-- Md5Cipher
+AbstractCipher <|-- Sha1Cipher
+AbstractCipher <|-- Sha256Cipher
+
+StorageAdapterInterface <|.. JsonFileStorageAdapter
+
+@enduml
