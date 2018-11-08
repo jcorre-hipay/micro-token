@@ -19,7 +19,8 @@ A built-in server is provided, run:
 
 The server is now listening to `http://localhost:3000`.
 
-Behat and PhpSpec are used for functional and unit testing.
+Behat, PhpUnit and PhpSpec are used for functional, integration and unit testing.
 
     $ bin/behat
+    $ bin/phpunit
     $ bin/phpspec run
